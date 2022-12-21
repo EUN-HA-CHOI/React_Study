@@ -1,0 +1,118 @@
+## 프론트엔드 라이브러리와 프레임워크의 등장 배경  
+
+프론트엔드 라이브러리가 등장하게 된 이유는 동적인 웹 페이지를 보다 효율적으로 유지보수하고 관히할 수 있도록 하기 위함이다.  
+
+정적인 페이지는 웹 서버에 이미 저장되어 있는데 HTML 문서를 클라이언트에게 전달하여 받은 페이지이다. 기업을 소개하는 페이지라면,  
+단순히 기업 정보를 전달하기 위한 목적이기 때문에 유저의 인터랙션은 중요하지 않은 요소로 볼 수 있다. 이런 경우엔    
+단순히 HTML 과 CSS의 구성만으로도 충분히 멋진 웹 페이지를 만들 수 있다.   
+
+반면, 동적인 페이지는 유저의 행동 흐름에 따라 웹페이지의 구성을 달리 해 주어야 하는 페이지를 말한다. 즉, 유저의 요청 정보를 처리한 후  
+제작된 HTML 문서를 클라이언트가 전달받게 된다.   
+
+동적인 페이지가 주를 이루는 요즘, 유저 인터랙션을 처리하기 위한 상태 변화가 많아졌다. 이를 자연스러운 유저 인터페이스로 만들어주기 위해서  
+프론트엔드 라이브러리 / 프레임워크가 등장하게 된다.  
+
+## 프론트엔드 라이브러리와 프레임워크는 무엇을 도와주는가?  
+
+웹 페이지라기보다 웹 애플리케이션이라 불리는 요즘 프로젝트 규모가 커지고, 다양한 유저 인터랙션이 전달된다면 그만큼 DOM 요소들 또한 변화가 이루어져야  
+한다는 것과 같다. DOM 요소들이 변화한다는 것은 랜더 트리 재생성, 요소의 스타일 계산, 레이아웃 구성, 패인팅 하는 과정을 가쳐야 한다는 것과 같다.  
+유저 인터랙션이 전달되는 만큼, 이와 같은 과정이 반복되어야 한다는 것이다.  
+
+이러한 과정이 반복 될수록 브라우저가 많은 연산을 해야하고, 이는 전체적인 프로세스의 비효율성을 야기한다. 또한 많은 DOM 요소의 변화를 개발자가 직접 관리 하는 것은  
+적지 않은 짐으로 다가오게 될 것이다.    
+
+결국, 프론트앤드 라이브러리 / 프레임워크는 DOM 관리와 상태 변화 관리를 최소화하고, 개발자는 기능 개발, 사용자 인터페이스에 보다 더 집중할 수 있도록 도와주는 것이며   
+이러한 목적을 가지고 다양한 해결 방식, 추구 방향을 가지고 각각의 프론트앤드 라이브러리 / 프래임워크가 탄생하게 되었다.  
+
+## 왜 리액트인가?  
+
+각각의 프론트앤드 라이브러리 / 프래임워크의 추구하는 방향과 특징이 다르다.  
+
+리액트의 특징은 무엇일까?  
+
+* Component 단위 작성  
+**컴포넌트는 UI 를 구성하는 개별적인 뷰 단위** 로서, UI 개발을 레고라고 한다면, 컴포넌트는 블록 역학을 한다.   
+이러한 특징은 하나의 컴포넌트를 여러 부분에서 사용할 수 있게 해 준다. 웹 애플리케이션의 여러 곳에 버튼이 필요하다면, 공통된 하나의 버튼 컴포넌트를 생성하고 그 컴포넌트를 필요한 곳에 가져다 사용하면 된다.  
+이는 **생산성과 유지보수를 용이하게 한다.** 하나의 요소의 변화가 다른 요소들의 변화에 영향을 미치는 복잡한 로직을 업데이트하는 작업의 경우,   
+컴포넌트의 재사용 기능으로서 보완할 수 있게 된다.   
+
+* JSX(Javascript + xml)
+자바스크립트에 대한 확장 구문으로서, 리액트에서 element(요소)를 제공해 준다. 장점은 다양하며 개발자가 마크업 코드에 익숙하면 그것만으로도  
+JSX를 통해 컴포넌트를 구성하는 데 쉽게 적응할 수 있는 장점이 있다.    
+
+아래 코드에서 return() 에 감싸져 있는 HTML 문법과 유사한 코드가 JSX 이다.  
+```
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+
+const App = () => {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <h1 className="App-title">Welcome to React</h1>
+      </header>
+      <p className="App-intro">
+        To get started, edit <code>src/App.js</code> and save to reload.
+      </p>
+    </div>
+  );
+};
+
+export default App;
+```
+
+위와 같은 코드는 creata-react-app을 통해 리액트 프로젝트를 생성할 때 포함되어 있는 Babel이 아래와 같은 코드로 변환하여 컴파일 해준다.  
+
+```
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _react = _interopRequireDefault(require("react"));
+
+var _logo = _interopRequireDefault(require("./logo.svg"));
+
+require("./App.css");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const App = () => {
+  return /*#__PURE__*/_react.default.createElement("div", {
+    className: "App"
+  }, /*#__PURE__*/_react.default.createElement("header", {
+    className: "App-header"
+  }, /*#__PURE__*/_react.default.createElement("img", {
+    src: _logo.default,
+    className: "App-logo",
+    alt: "logo"
+  }), /*#__PURE__*/_react.default.createElement("h1", {
+    className: "App-title"
+  }, "Welcome to React")), /*#__PURE__*/_react.default.createElement("p", {
+    className: "App-intro"
+  }, "To get started, edit ", /*#__PURE__*/_react.default.createElement("code", null, "src/App.js"), " and save to reload."));
+};
+
+var _default = App;
+exports.default = _default;
+```
+
+덕분에 우리는 익숙한 HTML문법과 유사한 JSX를 통해 컴포넌트를 생성할 수 있게 된다.    
+
+* Virtual DOM  
+유저의 인터랙션에 의해 상태 변화가 일어나면 브라우저 작동 원리에 의해 랜더링 과정을 반복하게 된다. Vitual DOM은 이러한 과정에 의해 발생하는 비효율성을 최소화하기 위해 탄생하게 되었다.    
+Virtual DOM의 개념이 기존에 아예 없던 것은 아니다. 또한, Virtual DOM 개념을 적용한 유일한 프론트앤드 라이브러리 / 프레임워크는 아닙니다. 하지만, 리액트는 성공적으로 Virtual DOM 개념을 적용한 선발 주자라고 할 수 있다.   
+
+* Virtual DOM 의 작동 원리    
+유저 인터랙션에 의해 View에 변화가 발생하여 10개의 노드를 수정해 주어야 한다면, 10번의 레이아웃 재계산, 10번의 리랜더링이 필요하다는 것이다.  
+Virtual DOM은 변화가 발생하면, 실제 DOM에 적용되기 전에 Virtual DOM에 우선 적용을 시켜본다. 실제 DOM에 바로 적용하나, Virtual DOM에 적용하나 같은 연산 비용이 필요할 거라 생각할 수 있지만, Vitual DOM은 랜더링 과정이 필요 없기 때문에 연산 비용이 실제 DOM보다 적다.  
+Virtual DOM에서 이러한 연산이 끝나고 나면, 최종적인 변화를 실제 DOM에 전달 해 준다. 즉, 10번의 작업을 하나로 묶어 딱 한 번 전달해 준다. 물론, 레이아웃 계산과 리랜더링하는 과정의 규모는 커지겠지만, 횟수를 줄이는 것으로 충분히 연산 비용을 적게 만들어 준다.  
+또한, Virtual DOM은 어떤 게 바뀌었는지, 어떤 게 바뀌지 않았는지 자동으로 파악하여 필요한 DOM 트리만 업데이트할 수 있게 해준다.   
+
+
+
+
