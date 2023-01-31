@@ -4,8 +4,10 @@ useMemo 는 특정 결과값을 재사용 할 때 사용하는 반면, useCallba
 
  한번 만든 함수를 필요할때만 새로 만들고 재사용하는 것은 여전히 중요. 그 이유는, 우리가 나중에 컴포넌트에서 props 가 바뀌지 않았으면 Virtual DOM 에 새로 렌더링하는 것 조차 하지 않고   
  컴포넌트의 결과물을 재사용 하는 최적화 작업을 할건데, 이 작업을 하려면, 함수를 재사용하는것이 필수     
- 
- ```
+
+
+
+```
   const onToggle = id => {
     setUsers(
       users.map(user => 
@@ -15,7 +17,8 @@ useMemo 는 특정 결과값을 재사용 할 때 사용하는 반면, useCallba
   };
  ```
  * useCallback ({},[]) 적용 후   
- 
+   * useMemo와 비슷하다. --> useMemo 기반으로 만들어졌기 때문에   
+   * 첫번째 인수에 함수를 두번째 인수에 상태가 props에서 사용하는 배열을 넣는다.  
  ```
   const onToggle = useCallback (
      id => {
