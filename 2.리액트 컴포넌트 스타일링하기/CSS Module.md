@@ -44,4 +44,62 @@ className 을 설정 할 때에는 styles.Box 이렇게 import 로 불러온 sty
 
 만약 CSS 클래스 네이밍 규칙을 만들고 따르기 싫다면, CSS Module 을 사용하면 된다.  
 
+<hr>
+
+### CSS Module 기술을 사용하여 커스텀 체크박스 컴포넌트를 만드는 방법.   
+
+```
+import React from 'react';
+
+function CheckBox({ children, checked, ...rest }) {
+  return (
+    <div>
+      <label>
+        <input type="checkbox" checked={checked} {...rest} />
+        <div>{checked ? '체크됨' : '체크 안됨'}</div>
+      </label>
+      <span>{children}</span>
+    </div>
+  );
+}
+
+export default CheckBox;
+```
+
+여기서 `...rest` 를 사용한 이유는, CheckBox 컴포넌트에게 전달하게 될 `name, onChange` 같은 값을 그대로 `input` 에게 넣어주기 위함 이다  
+  
+ <img width="200" alt="스크린샷 2023-02-03 오후 12 17 49" src="https://user-images.githubusercontent.com/97012561/216504425-70c9b505-bf3a-42e3-a6dc-2afba4566fb2.png">  <img width="174" alt="스크린샷 2023-02-03 오후 12 19 23" src="https://user-images.githubusercontent.com/97012561/216504605-c0323c4e-c8a4-43ce-8516-d7e6880eb3ed.png">
+
+
+input 이 아닌 텍스트 부분을 선택 했는데도 값이 바뀌는 이유는 현재 우리가 해당 내용을 `label` 태그로 감싸줬기 때문이다.  
+
+스타일링을 하기 전에 `react-icons` 라이브러리를 설치 해 준다.  
+이 라이브러리를 사용하면  Font Awesome, Ionicons, Material Design Icons, 등의 아이콘들을 컴포넌트 형태로 쉽게 사용 할 수 있습니다.  
+
+**리액트 아이콘 라이브러리 [이동](https://react-icons.github.io/react-icons/#/)**
+
+* 라이브러리에서 원하는 아이콘들을 불러온다.   
+
+```
+import React from 'react';
+import { MdCheckBox, MdCheckBoxOutlineBlank } from 'react-icons/md';
+
+function CheckBox({ children, checked, ...rest }) {
+  return (
+    <div>
+      <label>
+        <input type="checkbox" checked={checked} {...rest} />
+        <div>{checked ? <MdCheckBox /> : <MdCheckBoxOutlineBlank />}</div>
+      </label>
+      <span>{children}</span>
+    </div>
+  );
+}
+
+export default CheckBox;
+```
+
+이렇게 수정을 하면, 텍스트 대신 아이콘이 나타나게 될 것이다.   
+
+<img width="160" alt="스크린샷 2023-02-03 오후 12 44 26" src="https://user-images.githubusercontent.com/97012561/216507673-b2399158-a61a-40f3-82fe-ac62cdd57a20.png">
 
