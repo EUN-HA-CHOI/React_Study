@@ -101,5 +101,6 @@ export default CheckBox;
 
 이렇게 수정을 하면, 텍스트 대신 아이콘이 나타나게 될 것이다.   
 
-<img width="160" alt="스크린샷 2023-02-03 오후 12 44 26" src="https://user-images.githubusercontent.com/97012561/216507673-b2399158-a61a-40f3-82fe-ac62cdd57a20.png">
+<img width="210" alt="스크린샷 2023-02-03 오후 12 46 37" src="https://user-images.githubusercontent.com/97012561/216507907-b25ed5f2-b397-4771-930e-de493bac6a67.png">
+
 
