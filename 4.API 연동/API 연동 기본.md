@@ -45,6 +45,7 @@ axios.post('/users', {
 [API주소](https://jsonplaceholder.typicode.com/users)  
 
 <hr>
+
 ## useState 와 useEffect 로 데이터 로딩하기  
 
 `useState` 를 사용하여 요청 상태를 관리하고, `useEffect` 를 사용하여 컴포넌트가 렌더링되는 시점에 요청을 시작하는  
